@@ -1,0 +1,119 @@
+### sample (complete) configuration file for ezextensionbuilder
+### to be saved in $rootdir/pake-$extension.yaml
+
+extension:
+    name: owner
+
+version:
+    # the version number is mandatory
+    major: 1
+    minor: 0
+    release: 0alpha1
+
+    # if not set, defaults to $major.$minor
+    alias:
+
+    # if not set, defaults to 'GNU General Public License v2.0'
+    license: GNU General Public License v2.0
+
+create:
+    # whether to create a .tar.gz file of the extension during the 'dist' task
+    # if not set, defaults to no
+    tarball: yes
+
+    # if not set, defaults to no
+    zip: no
+
+    # whether to create a share/filelist.md5 file during the 'build' task
+    # if not set, defaults to yes
+    filelist_md5: yes
+
+    # whether to create a php API doc (in doc/api/) during the 'generate-documentation' task with doxygen
+    # nb: if doxygen is not in your PATH, use the --doxygen=/path/to/doxygen option on the command line
+    # if not set, defaults to no
+    doxygen_doc: no
+
+    # whether to create an ezpackage out of the extension.
+    # NB: for this to work, a package.xml file needs to be present at the root of the extension
+    ezpackage: no
+
+    # whether to create a pear package out of the extension.
+    # NB: for this to work, the ezpackage must also have been built
+    pearpackage: no
+
+ezp:
+    # ezpublish required version: this string is used in documentation files
+    # and for building packages. Can be left empty / undefined
+    version:
+        major: 
+        minor: 
+        release: 
+
+# Subversion url for the source code
+svn:
+    url: 
+
+# Git url and branch (leave empty for master)
+git:
+    url: https://github.com/cyberwolf/owner
+    branch:
+
+# If the source is on a local folder
+file:
+    url:
+
+files:
+    # list of files where tokens will be replaced
+    #
+    # current tokens are [EXTENSION_VERSION], [EXTENSION_PUBLISH_VERSION] and [EXTENSION_LICENSE]
+    #
+    # uses the ANT pattern syntax (see http://ant.apache.org/manual/dirtasks.html#patterns)
+    # examples:
+    # myfile.txt will match only one file at the root dir of the extension
+    # *.txt will match all text files at the root dir of the extension
+    # firstlevel/myfile.txt will match only in one specific dir
+    # firstlevel/secondlevel/ will only match a directory, not a file (nb: trailing slash is key)
+    # firstlevel/*/thirdlevel/myfile.txt will match regardless of the name of 2nd level dir
+    # **/myfile.txt will match in any dir
+    # firstlevel/**/myfile.txt will match in any subdir of 'firstlevel'
+    to_parse: [extension.xml]
+
+    # files that will be excluded from the build
+    # same syntax as above
+    to_exclude: []
+
+    # where the INSTALL and README files will be looked for.
+    # Leave empty for extension root dir - where those files should be btw...
+    gnu_dir:
+
+    # the name of sql files that will be checked for presence iff the corresponding
+    # .dba file is found. Those files should be in directory sql/$db/ and default to:
+    # schema.sql (corresponding to db_schema.dba)
+    # cleandata.sql (corresponding to db_data.dba)
+    # nb: if your extension names the files the same as the db, use "db_schema: $db.sql"
+    # nb: either your extension must provide no sql/dba files at all, or both
+    #     the .dba file and the corresponding .sql for all 3 supported databases
+    sql_files:
+        db_schema: schema.sql
+        db_data: cleandata.sql
+
+# List of extensions that will be built as dependency
+# For each one, an svn:url, git:url or fil:url is needed
+#dependencies:
+#    extensions:
+#        yourextension:
+#            git:
+#                url:
+
+
+# misc stuff that you normally do not change
+
+# working directories (relative to script execution dir)
+build:
+    dir: build
+dist:
+    dir: dist
+
+# separator char used between version minor and release numbers. Defaults to '-' if unspecified
+releasenr:
+    separator: .
