@@ -1,0 +1,28 @@
+
+ 1. Activate extension
+****************************
+
+Activate the owner extension by using the admin interface
+or in settings/override/site.ini.append(.php):
+
+[ExtensionSettings]
+ActiveExtensions[]=owner
+
+
+ 2. Assign policies
+*****************************
+
+Add a policy for the full owner module to the desired roles.
+
+
+ 3. Modify browse.ini
+******************************
+
+By default, you're only allowed to choose objects of the class "User" as the new 
+owner for an object. You will need to modify browse.ini.append(.php) if you're 
+using other classes for user accounts as well.
+
+[ChangeOwner]
+Class[]
+Class[]=user
+Class[]=custom_user

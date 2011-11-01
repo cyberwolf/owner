@@ -1,0 +1,8 @@
+
+/* Context menu in admin2 design */
+#ezopt-menu-change-owner {
+  background-position:5% 50%;
+  background-repeat:no-repeat;
+  padding-left:1em;
+  background-image:url("../images/owner/change.png");
+}
