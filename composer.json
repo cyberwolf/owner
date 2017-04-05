@@ -1,0 +1,18 @@
+{
+    "name": "cyberwolf/owner",
+    "description": "eZ Publish Owner extension",
+    "type": "ezpublish-legacy-extension",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Kristof Coomans",
+            "email": "kristof@statik.be"
+        }
+    ],
+    "require": {
+        "ezsystems/ezpublish-legacy-installer": "*"
+    },
+    "extra": {
+        "ezpublish-legacy-extension-name": "owner"
+    }
+}
